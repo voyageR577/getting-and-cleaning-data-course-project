@@ -8,6 +8,14 @@
 # load packages
 library(dplyr)
 
+# Check if the dataset exists and download it if it's not
+if (!file.exists("UCI\ HAR\ Dataset")) {
+    fileUrl <-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+    download.file(fileUrl,destfile="UCI\ HAR\ Dataset.zip",method="curl")
+    unzip(zipfile="UCI\ HAR\ Dataset.zip")
+    message("Make sure that the downloaded dataset is saved to your working directory while running this R script")
+}
+
 # Read text file
 # features
 features<-read.table("./UCI\ HAR\ Dataset/features.txt")
